@@ -110,7 +110,11 @@ def locate_run_dir(run_id_or_run_dir):
         print('Run-dirs: {}'.format(run_dirs))
         print('joine_search path: {}'.format(os.path.join(full_search_dir, '*')))
         run_dirs = [run_dir for run_dir in run_dirs if run_dir_pattern.match(os.path.basename(run_dir))]
+        print('Run-dirs II: {}'.format(run_dirs))
+
         run_dirs = [run_dir for run_dir in run_dirs if os.path.isdir(run_dir)]
+        print('Run-dirs III: {}'.format(run_dirs))
+
         if len(run_dirs) == 1:
             return run_dirs[0]
     raise IOError('Cannot locate result subdir for run', run_id_or_run_dir)
