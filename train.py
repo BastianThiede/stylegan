@@ -34,7 +34,7 @@ if 1:
     tf_config     = {'rnd.np_random_seed': 1000}                                           # Options for tflib.init_tf().
 
     # Dataset.
-    desc += '-wikiart';     dataset = EasyDict(tfrecord_dir='wikiart', resolution=256);                 train.mirror_augment = True
+    desc += '-wikiart';     dataset = EasyDict(tfrecord_dir='wikiart', resolution=512);                 train.mirror_augment = True
     #desc += '-ffhq';     dataset = EasyDict(tfrecord_dir='ffhq');                 train.mirror_augment = True
     #desc += '-ffhq512';  dataset = EasyDict(tfrecord_dir='ffhq', resolution=512); train.mirror_augment = True
     #desc += '-ffhq256';  dataset = EasyDict(tfrecord_dir='ffhq', resolution=256); train.mirror_augment = True
@@ -51,6 +51,8 @@ if 1:
 
     # Default options.
     train.total_kimg = 25000
+    train.resume_kimg = 7000
+    train.resume_run_id = 'latest'
     sched.lod_initial_resolution = 8
     sched.G_lrate_dict = {128: 0.0015, 256: 0.002, 512: 0.003, 1024: 0.003}
     sched.D_lrate_dict = EasyDict(sched.G_lrate_dict)
