@@ -108,6 +108,7 @@ def locate_run_dir(run_id_or_run_dir):
             return run_dir
         run_dirs = sorted(glob.glob(os.path.join(full_search_dir, '*')))
         print('Run-dirs: {}'.format(run_dir))
+        print('joine_search path: {}'.format(os.path.join(full_search_dir, '*')))
         run_dirs = [run_dir for run_dir in run_dirs if run_dir_pattern.match(os.path.basename(run_dir))]
         run_dirs = [run_dir for run_dir in run_dirs if os.path.isdir(run_dir)]
         if len(run_dirs) == 1:
