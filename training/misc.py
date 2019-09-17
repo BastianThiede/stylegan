@@ -102,6 +102,7 @@ def locate_run_dir(run_id_or_run_dir):
         full_search_dir = config.result_dir if search_dir == '' else os.path.normpath(os.path.join(config.result_dir, search_dir))
         run_dir = os.path.join(full_search_dir, str(run_id_or_run_dir))
         print('Searching for full_search in: {}'.format(run_dir))
+        print('Full-search-dir: {}'.format(full_search_dir))
 
         if os.path.isdir(run_dir):
             return run_dir
