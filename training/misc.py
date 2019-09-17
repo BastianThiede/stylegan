@@ -119,6 +119,14 @@ def locate_run_dir(run_id_or_run_dir):
             return run_dirs[0]
     raise IOError('Cannot locate result subdir for run', run_id_or_run_dir)
 
+def locate_latest_pkl():
+    allpickles = sorted(glob.glob(os.path.join(config.result_dir, '0*', 'network-*.pkl')))
+    latest_pickle = allpickles[-1]
+    resume_run_id = os.path.basename(os.path.dirname(latest_pickle))
+    RE_KIMG = re.compile('network-snapshot-(\d+).pkl')
+    kimg = int(RE_KIMG.match(os.path.basename(latest_pickle)).group(1))
+    return (locate_network_pkl(resume_run_id), float(kimg))
+
 def list_network_pkls(run_id_or_run_dir, include_final=True):
     run_dir = locate_run_dir(run_id_or_run_dir)
     print('Searching at: {}'.format(run_dir))
