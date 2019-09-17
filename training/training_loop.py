@@ -138,6 +138,8 @@ def training_loop(
     resume_kimg             = 0.0,      # Assumed training progress at the beginning. Affects reporting and training schedule.
     resume_time             = 0.0):     # Assumed wallclock time at the beginning. Affects reporting.
 
+    print('Resume_kimg: {}, resume_run_id: {}'.format(resume_kimg,
+                                                      resume_run_id))
     # Initialize dnnlib and TensorFlow.
     ctx = dnnlib.RunContext(submit_config, train)
     tflib.init_tf(tf_config)
