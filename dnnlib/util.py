@@ -317,6 +317,7 @@ def copy_files_and_create_dirs(files: List[Tuple[str, str]]) -> None:
     """Takes in a list of tuples of (src, dst) paths and copies files.
     Will create all necessary directories."""
     for file in tqdm(files):
+        print(file)
         target_dir_name = os.path.dirname(file[1])
 
         # will create all intermediate-level directories
@@ -324,7 +325,7 @@ def copy_files_and_create_dirs(files: List[Tuple[str, str]]) -> None:
             os.makedirs(target_dir_name)
 
         shutil.copyfile(file[0], file[1])
-
+    print('Done Copying files')
 
 # URL helpers
 # ------------------------------------------------------------------------------------------
