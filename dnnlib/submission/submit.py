@@ -19,7 +19,6 @@ import shutil
 import time
 import traceback
 
-from tqdm import tqdm
 import zipfile
 
 from enum import Enum
@@ -201,7 +200,7 @@ def _populate_run_dir(run_dir: str, submit_config: SubmitConfig) -> None:
 
     run_func_module_dir_path = util.get_module_dir_by_obj_name(submit_config.run_func_name)
     assert '.' in submit_config.run_func_name
-    for _idx in tqdm(range(submit_config.run_func_name.count('.') - 1)):
+    for _idx in range(submit_config.run_func_name.count('.') - 1):
         run_func_module_dir_path = os.path.dirname(run_func_module_dir_path)
     files += util.list_dir_recursively_with_ignore(run_func_module_dir_path, ignores=submit_config.run_dir_ignore, add_base_to_relative=False)
 

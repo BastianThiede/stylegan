@@ -25,6 +25,9 @@ import hashlib
 import glob
 import uuid
 
+from tqdm import tqdm
+
+
 from distutils.util import strtobool
 from typing import Any, List, Tuple, Union
 
@@ -313,7 +316,7 @@ def list_dir_recursively_with_ignore(dir_path: str, ignores: List[str] = None, a
 def copy_files_and_create_dirs(files: List[Tuple[str, str]]) -> None:
     """Takes in a list of tuples of (src, dst) paths and copies files.
     Will create all necessary directories."""
-    for file in files:
+    for file in tqdm(files):
         target_dir_name = os.path.dirname(file[1])
 
         # will create all intermediate-level directories
