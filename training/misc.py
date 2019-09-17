@@ -124,6 +124,7 @@ def locate_latest_pkl():
     print('Searching for pickles at: {}'.format(os.path.join(config.result_dir, '0*', 'network-*.pkl')))
     latest_pickle = allpickles[-1]
     resume_run_id = os.path.basename(os.path.dirname(latest_pickle))
+    print(os.path.basename(latest_pickle))
     RE_KIMG = re.compile('network-snapshot-(\d+).pkl')
     kimg = int(RE_KIMG.match(os.path.basename(latest_pickle)).group(1))
     return (locate_network_pkl(resume_run_id), float(kimg))
