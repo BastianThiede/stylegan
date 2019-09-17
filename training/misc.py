@@ -112,6 +112,7 @@ def locate_run_dir(run_id_or_run_dir):
 
 def list_network_pkls(run_id_or_run_dir, include_final=True):
     run_dir = locate_run_dir(run_id_or_run_dir)
+    print('Searching at: {}'.format(run_dir))
     pkls = sorted(glob.glob(os.path.join(run_dir, 'network-*.pkl')))
     if len(pkls) >= 1 and os.path.basename(pkls[0]) == 'network-final.pkl':
         if include_final:
